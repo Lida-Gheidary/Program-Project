@@ -1,0 +1,17 @@
+channel,attribution_class,mobile_app_pct,website_pct,call_center_pct,pos_pct,top_env,top_env_share
+Direct Mail,Gainer,17.6,21.3,37.5,19.6,Call Center,37.5
+Social Referrals,Gainer,23.3,17.3,31.7,19.2,Call Center,31.7
+Print,Gainer,23.9,19.5,30.1,18.8,Call Center,30.1
+Podcast,Gainer,24.6,18.4,31.3,18.1,Call Center,31.3
+Television,Gainer,24.7,18.5,31.2,18.2,Call Center,31.2
+Natural Search,Gainer,23.8,18.7,32.4,17.8,Call Center,32.4
+Social Campaign,Gainer,24.3,19.2,32.2,17.1,Call Center,32.2
+Display,Gainer,23.8,19.3,31.9,17.9,Call Center,31.9
+Other Websites,Gainer,23.7,17.8,33.9,17.5,Call Center,33.9
+Paid Search,Gainer,24.8,18.4,32.3,17.4,Call Center,32.3
+Comparison Shopping,Stable,24.6,18.5,32.1,17.5,Call Center,32.1
+Push,Stable,23.9,18.9,32.8,17.7,Call Center,32.8
+SMS,Loser,22.0,24.1,31.0,17.0,Call Center,31.0
+In-App Messaging,Loser,58.6,11.5,19.6,8.3,Mobile App,58.6
+LLM,Loser,25.0,19.5,30.4,17.2,Call Center,30.4
+Email,Loser,19.6,31.1,27.9,15.5,Website,31.1

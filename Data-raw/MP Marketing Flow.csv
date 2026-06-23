@@ -1,0 +1,26 @@
+﻿#=================================================================
+# Marketing Performance
+# Data view: Omni-Channel - Multi-Industry
+"# Date: May 1, 2026 - May 31, 2026"
+#=================================================================
+
+
+##############################################
+# Marketing Flow
+##############################################
+Previous
+Focus,Backstep 1,Backstep 2,Path views
+Total Orders,,,189270
+Total Orders,Email,,39180
+Total Orders,Email,SMS,5849
+Total Orders,Email,Push,5771
+Total Orders,Email,Comparison Shopping,4922
+Total Orders,Email,Paid Search,4027
+Total Orders,Email,Other Websites,3759
+Total Orders,Email,Entries,2823
+Total Orders,Email,+10 more,12029
+Total Orders,SMS,,24307
+Total Orders,Push,,21413
+Total Orders,Comparison Shopping,,18997
+Total Orders,In-App Messaging,,16463
+Total Orders,+11 more,,68910

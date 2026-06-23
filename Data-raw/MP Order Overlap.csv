@@ -1,0 +1,15 @@
+﻿#=================================================================
+# Marketing Performance
+# Data view: Omni-Channel - Multi-Industry
+"# Date: May 1, 2026 - May 31, 2026"
+#=================================================================
+
+
+##############################################
+# Venn Data (2)
+##############################################
+,"Interaction Channel = Website, Mobile Web & Order Exists",Interaction Channel = Mobile App & Order Exists,Interaction Channel = Point Of Sale & Order Exists,"Interaction Channel = Website, Mobile Web & Order Exists","Interaction Channel = Website, Mobile Web & Order Exists",Interaction Channel = Mobile App & Order Exists,"Interaction Channel = Website, Mobile Web & Order Exists"
+,"Interaction Channel = Website, Mobile Web & Order Exists",Interaction Channel = Mobile App & Order Exists,Interaction Channel = Point Of Sale & Order Exists,Interaction Channel = Mobile App & Order Exists,Interaction Channel = Point Of Sale & Order Exists,Interaction Channel = Point Of Sale & Order Exists,Interaction Channel = Mobile App & Order Exists
+,"Interaction Channel = Website, Mobile Web & Order Exists",Interaction Channel = Mobile App & Order Exists,Interaction Channel = Point Of Sale & Order Exists,Interaction Channel = Mobile App & Order Exists,Interaction Channel = Point Of Sale & Order Exists,Interaction Channel = Point Of Sale & Order Exists,Interaction Channel = Point Of Sale & Order Exists
+Metrics,134551,131118,112199,67561,55010.00000000001,52430.00000000001,27740
+Total Orders,134551,131118,112199,67561,55010.00000000001,52430.00000000001,27740

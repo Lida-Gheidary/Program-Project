@@ -1,0 +1,35 @@
+﻿#=================================================================
+# Marketing Attribution
+# Data view: Omni-Channel - Multi-Industry
+"# Date: May 1, 2026 - May 31, 2026"
+#=================================================================
+
+
+##############################################
+# Marketing Channel Performance - Retail Product Category
+##############################################
+,,Total Orders (Algorithmic | Person | 30 Days),Total Orders (Linear | Person | 30 Days)
+Marketing Channel,,236183.0000000091,236182.9999999921
+Email,,27597.52019508274,50349.374541033714
+Email,Retail Product Category,27581.8932359296,50333.76442527035
+Email,Women,6911.261716316076,17878.739209331365
+Email,Men,6463.662743529604,14952.843114999207
+Email,Home & Kitchen,5707.940882751499,11057.198583030702
+Email,Kids,5284.345333624702,9627.164564780187
+Email,Beauty & Personal Care,3214.682559708796,4484.939058072028
+SMS,,25003.35260156516,36228.77678964886
+SMS,Retail Product Category,24992.29750388417,36217.53767431695
+SMS,Women,6215.476641483502,12870.875155699378
+SMS,Men,5824.169777282889,10755.47845538659
+SMS,Home & Kitchen,5177.1597072603245,7938.5092789582295
+SMS,Kids,4820.2668225986945,6909.778259411232
+SMS,Beauty & Personal Care,2955.2245552595405,3231.794055215593
+Push,,24734.100109612667,35007.04564476682
+Comparison Shopping,,23274.979438617003,22428.671846363373
+Comparison Shopping,Retail Product Category,23264.25608696797,22418.64416524067
+Comparison Shopping,Women,5762.014913165525,8011.5752136264155
+Comparison Shopping,Men,5398.318961894577,6606.494960024034
+Comparison Shopping,Home & Kitchen,4806.849357656229,4887.8724693821605
+Comparison Shopping,Kids,4505.176850302476,4312.540265962986
+Comparison Shopping,Beauty & Personal Care,2791.896003949738,2016.1852735709163
+Other Websites,,22238.306339493905,19996.11017537212

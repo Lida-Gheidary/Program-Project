@@ -1,0 +1,15 @@
+﻿#=================================================================
+# Marketing Attribution
+# Data view: Omni-Channel - Multi-Industry
+"# Date: May 1, 2026 - May 31, 2026"
+#=================================================================
+
+
+##############################################
+# Venn Data (2)
+##############################################
+,Marketing Channel = Email & Message Sent,Marketing Channel = SMS & Message Sent,Marketing Channel = Push & Message Sent,Marketing Channel = Email & Message Sent,Marketing Channel = Email & Message Sent,Marketing Channel = SMS & Message Sent,Marketing Channel = Email & Message Sent
+,Marketing Channel = Email & Message Sent,Marketing Channel = SMS & Message Sent,Marketing Channel = Push & Message Sent,Marketing Channel = SMS & Message Sent,Marketing Channel = Push & Message Sent,Marketing Channel = Push & Message Sent,Marketing Channel = SMS & Message Sent
+,Marketing Channel = Email & Message Sent,Marketing Channel = SMS & Message Sent,Marketing Channel = Push & Message Sent,Marketing Channel = SMS & Message Sent,Marketing Channel = Push & Message Sent,Marketing Channel = Push & Message Sent,Marketing Channel = Push & Message Sent
+Metrics,32453,28431,28463,9278,9152,8105,2713
+People,32453,28431,28463,9278,9152,8105,2713

@@ -1,0 +1,28 @@
+﻿#=================================================================
+# Marketing Attribution
+# Data view: Omni-Channel - Multi-Industry
+"# Date: May 1, 2026 - May 31, 2026"
+#=================================================================
+
+
+##############################################
+# Marketing Channel Performance
+##############################################
+,Sessions,Total Orders (Last Touch | Person | 30 Days)
+Marketing Channel,1853027,236183
+Email,589756,49195.00000000001
+SMS,424438,30297.000000000004
+Push,413883,26778.000000000004
+Comparison Shopping,367306,23743.000000000004
+Paid Search,301847,19095
+Other Websites,270521,17633
+Display,198292,12100.000000000002
+Social Campaign,168065,10042
+In-App Messaging,147529,21217
+LLM,108262,5772.000000000001
+Natural Search,82511,4853
+Podcast,81896,4651
+Television,69514,4150
+Direct Mail,47293,2708
+Print,41445,2252
+Social Referrals,30963,1697.0000000000002

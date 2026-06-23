@@ -1,0 +1,17 @@
+channel,attribution_class,lifecycle_index,acquisition_rate,closure_rate,pct_delta_alg_vs_last
+Direct Mail,Gainer,0.0876,12.5,3.7,182.8
+Social Referrals,Gainer,-0.0019,4.2,4.4,127.5
+Print,Gainer,-0.001,4.4,4.5,125.3
+Podcast,Gainer,-0.0017,5.2,5.4,93.4
+Television,Gainer,-0.0062,4.8,5.4,91.1
+Natural Search,Gainer,-0.0002,5.5,5.5,88.4
+Social Campaign,Gainer,-0.0036,6.9,7.2,51.8
+Display,Gainer,0.0057,8.4,7.8,42.6
+Other Websites,Gainer,0.0249,11.7,9.2,26.1
+Paid Search,Gainer,-0.0026,10.1,10.3,12.1
+Comparison Shopping,Stable,-0.001,11.9,12.0,-2.0
+Push,Stable,0.0282,15.8,13.0,-7.6
+SMS,Loser,0.0168,16.3,14.6,-17.5
+In-App Messaging,Loser,-0.0974,7.7,17.5,-36.4
+LLM,Loser,-0.1853,0.6,19.2,-43.2
+Email,Loser,-0.0087,21.4,22.2,-43.9

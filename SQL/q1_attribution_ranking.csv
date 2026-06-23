@@ -1,0 +1,17 @@
+channel,attribution_class,last_touch,algorithmic,delta,pct_delta
+Direct Mail,Gainer,2708.0,7657.75,4949.75,1.8278
+Social Referrals,Gainer,1697.0,3860.42,2163.42,1.2748
+Print,Gainer,2252.0,5074.2,2822.2,1.2532
+Podcast,Gainer,4651.0,8994.22,4343.22,0.9338
+Television,Gainer,4150.0,7931.72,3781.72,0.9113
+Natural Search,Gainer,4853.0,9143.85,4290.85,0.8842
+Social Campaign,Gainer,10042.0,15243.86,5201.86,0.518
+Display,Gainer,12100.0,17248.63,5148.63,0.4255
+Other Websites,Gainer,17633.0,22238.31,4605.31,0.2612
+Paid Search,Gainer,19095.0,21402.92,2307.92,0.1209
+Comparison Shopping,Stable,23743.0,23274.98,-468.02,-0.0197
+Push,Stable,26778.0,24734.1,-2043.9,-0.0763
+SMS,Loser,30297.0,25003.35,-5293.65,-0.1747
+In-App Messaging,Loser,21217.0,13499.25,-7717.75,-0.3638
+LLM,Loser,5772.0,3277.91,-2494.09,-0.4321
+Email,Loser,49195.0,27597.52,-21597.48,-0.439

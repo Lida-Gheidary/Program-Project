@@ -30,7 +30,7 @@ q1 = pd.read_sql("""
         ROUND(last_touch_30d, 2)       AS last_touch,
         ROUND(algorithmic_30d, 2)      AS algorithmic,
         ROUND(delta_alg_vs_last, 2)    AS delta,
-        ROUND(pct_delta_alg_vs_last, 4) AS pct_delta
+        ROUND(pct_delta_alg_vs_last * 100, 2) AS algorithmic_change_pct
     FROM channels
     ORDER BY pct_delta_alg_vs_last DESC
 """, con)
@@ -44,7 +44,7 @@ q2 = pd.read_sql("""
         channel,
         attribution_class,
         ROUND(lifecycle_index, 4)          AS lifecycle_index,
-        ROUND(pct_delta_alg_vs_last, 4)    AS pct_delta,
+        ROUND(pct_delta_alg_vs_last * 100, 2) AS algorithmic_change_pct,
         CASE
             WHEN lifecycle_index > 0.005  THEN 'Acquisition-oriented'
             WHEN lifecycle_index < -0.005 THEN 'Closure-oriented'
@@ -62,12 +62,14 @@ q3 = pd.read_sql("""
     SELECT
         c.channel,
         c.attribution_class,
-        ROUND(e.orders_mobile_app, 1)    AS mobile_app_pct,
+                ROUND(e.orders_mobile_app, 1)    AS mobile_app_pct,
         ROUND(e.orders_website, 1)       AS website_pct,
+        ROUND(e.orders_mobile_web, 1)    AS mobile_web_pct,
         ROUND(e.orders_call_center, 1)   AS call_center_pct,
         ROUND(e.orders_pos, 1)           AS pos_pct,
         e.top_env,
-        e.top_env_share
+        ROUND(e.top_env_share, 1)        AS top_env_share_pct
+
     FROM channels c
     JOIN conversion_env e ON c.channel = e.channel
     ORDER BY c.pct_delta_alg_vs_last DESC
@@ -76,27 +78,38 @@ print("\nQuery 3 — Conversion environment by channel:")
 print(q3.to_string(index=False))
 q3.to_csv(OUTPUT_SQL + "q3_conversion_dependence.csv", index=False)
 
-# ── QUERY 4: High revenue but low algorithmic gain (and vice versa) ───────────
+# ── QUERY 4: Revenue context vs attribution shift ───────────────────────────
+median_revenue = float(master["total_revenue"].median())
+
 q4 = pd.read_sql("""
+    WITH benchmark AS (
+        SELECT ? AS median_revenue
+    )
     SELECT
-        channel,
-        attribution_class,
-        ROUND(total_revenue, 0)            AS total_revenue,
-        ROUND(pct_delta_alg_vs_last, 4)    AS pct_delta,
-        ROUND(revenue_per_order, 2)        AS revenue_per_order,
+        c.channel,
+        c.attribution_class,
+        ROUND(c.total_revenue, 0)          AS total_revenue,
+        ROUND(b.median_revenue, 2)         AS median_channel_revenue,
+        ROUND(c.pct_delta_alg_vs_last * 100, 2) AS algorithmic_change_pct,
+        ROUND(c.revenue_per_order, 2)      AS revenue_per_order,
         CASE
-            WHEN total_revenue > 500000 AND pct_delta_alg_vs_last < 0
-                THEN 'High revenue, over-credited by last-touch'
-            WHEN total_revenue < 200000 AND pct_delta_alg_vs_last > 0.005
-                THEN 'Low revenue, under-credited by last-touch'
-            WHEN total_revenue > 500000 AND pct_delta_alg_vs_last > 0.005
-                THEN 'High revenue, under-credited by last-touch'
-            ELSE 'Neutral'
-        END AS business_interpretation
-    FROM channels
-    ORDER BY total_revenue DESC
-""", con)
-print("\nQuery 4 — Revenue vs attribution shift:")
+            WHEN c.total_revenue >= b.median_revenue
+                THEN 'At or above median revenue'
+            ELSE 'Below median revenue'
+        END AS revenue_position,
+        CASE
+            WHEN c.pct_delta_alg_vs_last >= 0.10
+                THEN 'At least 10% higher algorithmic credit'
+            WHEN c.pct_delta_alg_vs_last <= -0.10
+                THEN 'At least 10% lower algorithmic credit'
+            ELSE 'Credit change below 10% in magnitude'
+        END AS attribution_interpretation
+    FROM channels c
+    CROSS JOIN benchmark b
+    ORDER BY c.total_revenue DESC
+""", con, params=(median_revenue,))
+
+print("\nQuery 4 — Revenue context vs attribution shift:")
 print(q4.to_string(index=False))
 q4.to_csv(OUTPUT_SQL + "q4_revenue_vs_attribution.csv", index=False)
 

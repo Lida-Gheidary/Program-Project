@@ -17,15 +17,17 @@ ranking = master[["channel", "attribution_class",
                   "revenue_per_order", "order_share_pct"]].copy()
 
 # Round for readability
-ranking["pct_delta_alg_vs_last"] = (ranking["pct_delta_alg_vs_last"] * 100).round(1)
+ranking["pct_delta_alg_vs_last"] = (ranking["pct_delta_alg_vs_last"] * 100).round(2)
 ranking["delta_alg_vs_last"]     = ranking["delta_alg_vs_last"].round(0)
 ranking["revenue_per_order"]     = ranking["revenue_per_order"].round(0)
-ranking["order_share_pct"]       = ranking["order_share_pct"].round(1)
+ranking["order_share_pct"]       = ranking["order_share_pct"].round(2)
 
 # Rename for clarity
-ranking.columns = ["channel", "class", "last_touch_orders",
-                   "algorithmic_orders", "delta_orders",
-                   "pct_delta", "revenue_per_order", "order_share_pct"]
+ranking.columns = [
+    "channel", "attribution_class", "last_touch_orders",
+    "algorithmic_orders", "delta_orders", "algorithmic_change_pct",
+    "revenue_per_order", "order_share_pct"
+]
 
 print(ranking.to_string(index=False))
 
@@ -38,12 +40,13 @@ model_compare = master[["channel", "attribution_class",
                          "pct_delta_linear_vs_last",
                          "pct_delta_alg_vs_last"]].copy()
 
-model_compare["pct_delta_linear_vs_last"] = (model_compare["pct_delta_linear_vs_last"] * 100).round(1)
-model_compare["pct_delta_alg_vs_last"]    = (model_compare["pct_delta_alg_vs_last"] * 100).round(1)
+model_compare["pct_delta_linear_vs_last"] = (model_compare["pct_delta_linear_vs_last"] * 100).round(2)
+model_compare["pct_delta_alg_vs_last"]    = (model_compare["pct_delta_alg_vs_last"] * 100).round(2)
 
-model_compare.columns = ["channel", "class", 
-                          "pct_delta_linear", 
-                          "pct_delta_algorithmic"]
+model_compare.columns = [
+    "channel", "attribution_class",
+    "linear_change_pct", "algorithmic_change_pct"
+]
 
 print("\nModel comparison (% change vs last-touch):")
 print(model_compare.to_string(index=False))

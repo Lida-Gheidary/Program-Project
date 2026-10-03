@@ -1,17 +1,17 @@
-channel,class,pct_delta_linear,pct_delta_algorithmic
-Direct Mail,Gainer,149.0,182.8
-Social Referrals,Gainer,-4.9,127.5
-Print,Gainer,-2.7,125.3
-Podcast,Gainer,-6.4,93.4
-Television,Gainer,-10.5,91.1
-Natural Search,Gainer,-7.9,88.4
-Social Campaign,Gainer,-8.1,51.8
-Display,Gainer,-2.0,42.6
-Other Websites,Gainer,13.4,26.1
-Paid Search,Gainer,-5.7,12.1
-Comparison Shopping,Stable,-5.5,-2.0
-Push,Stable,30.7,-7.6
-SMS,Loser,19.6,-17.5
-In-App Messaging,Loser,-61.3,-36.4
-LLM,Loser,-69.1,-43.2
-Email,Loser,2.3,-43.9
+channel,attribution_class,linear_change_pct,algorithmic_change_pct
+Direct Mail,Gainer,149.05,182.78
+Social Referrals,Gainer,-4.9,127.48
+Print,Gainer,-2.75,125.32
+Podcast,Gainer,-6.42,93.38
+Television,Gainer,-10.54,91.13
+Natural Search,Gainer,-7.86,88.42
+Social Campaign,Gainer,-8.06,51.8
+Display,Gainer,-2.01,42.55
+Other Websites,Gainer,13.4,26.12
+Paid Search,Gainer,-5.71,12.09
+Comparison Shopping,Stable,-5.54,-1.97
+Push,Stable,30.73,-7.63
+SMS,Loser,19.58,-17.47
+In-App Messaging,Loser,-61.31,-36.38
+LLM,Loser,-69.07,-43.21
+Email,Loser,2.35,-43.9

@@ -37,6 +37,57 @@ conv_pct = pd.read_csv("../Data-output/data/conversion_context.csv")
 
 print("Loaded:", master.shape, conv_pct.shape)
 print(master.columns.tolist())
+plt.rcParams["font.family"] = "DejaVu Sans"
+
+# ── CHART 1: Algorithmic vs last-touch attribution ───────────────────────────
+from matplotlib.patches import Patch
+from matplotlib.ticker import PercentFormatter
+
+df1 = master.sort_values("pct_delta_alg_vs_last", ascending=False).copy()
+delta_pct = df1["pct_delta_alg_vs_last"] * 100
+
+fig, ax = plt.subplots(figsize=(12, 8))
+bars = ax.barh(
+    df1["channel"], delta_pct,
+    color=df1["attribution_class"].map(COLORS), height=0.6
+)
+ax.invert_yaxis()
+
+for bar, value in zip(bars, delta_pct):
+    ax.annotate(
+        f"{value:+.1f}%",
+        xy=(value, bar.get_y() + bar.get_height() / 2),
+        xytext=(5 if value >= 0 else -5, 0),
+        textcoords="offset points",
+        ha="left" if value >= 0 else "right",
+        va="center", fontsize=9
+    )
+
+padding = (delta_pct.max() - delta_pct.min()) * 0.12
+ax.set_xlim(
+    min(0, delta_pct.min()) - padding,
+    max(0, delta_pct.max()) + padding
+)
+ax.axvline(0, color=COLORS["neutral"], linewidth=1, linestyle="--")
+ax.xaxis.set_major_formatter(PercentFormatter(xmax=100, decimals=0))
+ax.set_xlabel("Change in attributed orders vs last-touch (%)", labelpad=10)
+ax.set_title(
+    "Channel Attribution Change\nAlgorithmic vs Last-Touch (30 Days)",
+    fontsize=13, fontweight="bold", pad=16, loc="left"
+)
+ax.grid(axis="x", linewidth=0.5)
+ax.set_axisbelow(True)
+ax.legend(
+    handles=[Patch(color=COLORS[c], label=c)
+             for c in ["Gainer", "Stable", "Loser"]],
+    framealpha=0, loc="lower right", fontsize=9
+)
+
+plt.tight_layout()
+plt.savefig(OUTPUT + "chart1_attribution_delta.png",
+            dpi=150, bbox_inches="tight")
+plt.close()
+print("Chart 1 saved.")
 
 # ── CHART 2: Acquisition vs Closure rate by channel ──────────────────────────
 import matplotlib.ticker as mtick
@@ -66,7 +117,7 @@ for i in range(1, len(classes)):
         ax.axvline(i - 0.5, color=COLORS["grid"], linewidth=1.2, linestyle="--")
 
 plt.tight_layout()
-plt.savefig(OUTPUT + "chart2_lifecycle_scatter.png", dpi=150, bbox_inches="tight")
+plt.savefig(OUTPUT + "chart2_acquisition_vs_closure.png", dpi=150, bbox_inches="tight")
 plt.close()
 print("Chart 2 saved.")  
 

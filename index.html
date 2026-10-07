@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="How attribution settings change reported channel performance: a comparison of three models and two lookback windows across 16 channels in Adobe CJA demo data.">
   <meta name="theme-color" content="#000000">
+  <script src="theme.js"></script>
   <title>How last-touch shapes channel performance | Lida Gheidary</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,13 +20,20 @@
         <span class="brand-mark" aria-hidden="true">LG</span>
         <span>Attribution study<span class="brand-sub">Lida Gheidary</span></span>
       </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Sections <span aria-hidden="true">+</span></button>
       <nav id="site-nav" class="site-nav" aria-label="Case study sections">
         <a href="#findings">Findings</a>
         <a href="#setup">Study design</a>
         <a href="#results">Results</a>
         <a href="#interpretation">Interpretation</a>
       </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode" hidden>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"></path></svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z"></path></svg>
+          <span class="theme-label">Light mode</span>
+        </button>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Sections <span aria-hidden="true">+</span></button>
+      </div>
     </div>
   </header>
 

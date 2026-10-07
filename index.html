@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A self-contained case study of how last-touch, linear, and algorithmic attribution change the assessment of 16 marketing channels in Adobe CJA demo data.">
-  <meta name="theme-color" content="#f8f7f3">
+  <meta name="description" content="How attribution settings change reported channel performance: a comparison of three models and two lookback windows across 16 channels in Adobe CJA demo data.">
+  <meta name="theme-color" content="#000000">
   <title>How last-touch shapes channel performance | Lida Gheidary</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,54 +15,98 @@
   <a class="skip-link" href="#main">Skip to the case study</a>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="#overview" aria-label="Attribution case study overview"><span class="brand-mark">LG</span><span>Attribution study<span class="brand-sub">Lida Gheidary</span></span></a>
+      <a class="brand" href="#overview" aria-label="Attribution case study overview">
+        <span class="brand-mark" aria-hidden="true">LG</span>
+        <span>Attribution study<span class="brand-sub">Lida Gheidary</span></span>
+      </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Sections <span aria-hidden="true">+</span></button>
       <nav id="site-nav" class="site-nav" aria-label="Case study sections">
-        <a href="#findings">Findings</a><a href="#setup">Study design</a><a href="#results">Results</a><a href="#interpretation">Interpretation</a>
+        <a href="#findings">Findings</a>
+        <a href="#setup">Study design</a>
+        <a href="#results">Results</a>
+        <a href="#interpretation">Interpretation</a>
       </nav>
     </div>
   </header>
+
   <main id="main">
     <section class="hero container" id="overview" aria-labelledby="page-title">
       <div class="hero-copy">
         <p class="eyebrow">Marketing analytics / Research case study</p>
-        <h1 id="page-title">How last-touch shapes channel performance.</h1>
-        <p class="hero-lead">Before an order is placed, a customer may interact with several marketing channels. <strong>Attribution</strong> is the rule used to assign those channels credit for the order. <strong>Last-touch attribution</strong> assigns all that credit to the final eligible interaction.</p>
-        <p class="hero-motivation">That final-interaction rule was my starting concern. I wanted to investigate how the assessment of channel performance changes when order credit is reported under different attribution models and lookback windows.</p>
-        <div class="hero-meta"><span>Adobe Customer Journey Analytics demo</span><span>May 1–31, 2026</span></div>
-        <a class="text-link" href="#findings">Read the main findings <span aria-hidden="true">↓</span></a>
+        <h1 id="page-title">How last-touch<br>shapes channel<br>performance.</h1>
+        <p class="hero-lead">A comparison of attribution models and lookback windows shows how reported order credit, channel rankings, and classifications change.</p>
+        <a class="text-link" href="#findings">Explore the findings <span aria-hidden="true">↓</span></a>
       </div>
-      <aside class="study-question" aria-labelledby="question-title">
-        <p class="eyebrow" id="question-title">Research question</p>
-        <p>How does using last-touch attribution shape the assessment of marketing channel performance, and how does that assessment change under alternative models and lookback windows?</p>
-        <div class="study-question-scope"><p>Last-touch provides the baseline. Linear and algorithmic attribution provide two alternative allocations, each reported with a 14-day and a 30-day lookback.</p><p>The analysis examines differences in reported order credit, channel rankings, and the consistency of those differences across settings.</p></div>
+      <aside class="data-source" aria-labelledby="source-title">
+        <p class="eyebrow" id="source-title">Data source</p>
+        <h2>Adobe Customer Journey Analytics <span class="source-abbreviation">(CJA)</span></h2>
+        <span class="demo-badge">Demo data</span>
+        <p class="source-dataset">Omni-Channel – Multi-Industry demo</p>
+        <dl class="source-period">
+          <dt>Reporting period</dt>
+          <dd><time datetime="2026-05-01">May 1</time>–<time datetime="2026-05-31">31, 2026</time></dd>
+        </dl>
       </aside>
-      <div class="scope-strip" aria-label="Study scope"><span><strong>16</strong> marketing channels</span><span><strong>3</strong> attribution models</span><span><strong>2</strong> lookback windows</span><span><strong>1</strong> reporting month</span></div>
-      <p class="platform-context">Analytics tools make these allocation choices part of reporting. Their defaults vary: <a href="https://support.google.com/analytics/answer/9756891?hl=en">Google Analytics 4</a> defaults to data-driven attribution for event-scoped key-event reporting; <a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/compare-aa-cja/ga-to-cja/compare-data">CJA</a> allows attribution settings at the metric and report level. This study explicitly uses last-touch as its comparison baseline.</p>
+      <div class="scope-strip" aria-label="Study scope">
+        <span><strong>16</strong> channels</span>
+        <span><strong>3</strong> models</span>
+        <span><strong>2</strong> lookback windows</span>
+        <span><strong>1</strong> reporting month</span>
+      </div>
     </section>
 
     <section class="section findings-section" id="findings" aria-labelledby="findings-title">
       <div class="container">
-        <div class="section-heading"><p class="section-index">Main findings</p><h2 id="findings-title">The reported performance picture changes in three ways.</h2><p class="section-intro">In these demo exports, changing attribution settings alters more than the amount of order credit. It can change the direction of a comparison and the label attached to a channel, while leaving its relative rank unchanged.</p></div>
-        <div class="findings-list">
-          <article><span class="finding-number" aria-hidden="true">01</span><div><h3>The alternative model can change the direction of the result.</h3><p>At 30 days, Paid Search receives <strong>12.09% more</strong> order credit under algorithmic attribution than under last-touch, but <strong>5.71% less</strong> under linear attribution. Moving away from last-touch does not produce one uniform assessment.</p><a class="text-link" href="#model-evidence">Model comparison <span aria-hidden="true">↓</span></a></div></article>
-          <article><span class="finding-number" aria-hidden="true">02</span><div><h3>A substantial credit decrease can coexist with a stable rank.</h3><p>Email receives <strong>43.90% less</strong> algorithmic credit than last-touch at 30 days, yet remains the highest channel by attributed orders. It ranks first under all six settings examined here.</p><a class="text-link" href="#rank-evidence">Credit and channel position <span aria-hidden="true">↓</span></a></div></article>
-          <article><span class="finding-number" aria-hidden="true">03</span><div><h3>The window can change the magnitude and classification.</h3><p>SMS receives <strong>7.10% less</strong> algorithmic credit than last-touch at 14 days and <strong>17.47% less</strong> at 30 days. It crosses the study’s descriptive −10% boundary, so its classification depends on the lookback window.</p><a class="text-link" href="#windows">Lookback comparison <span aria-hidden="true">↓</span></a></div></article>
+        <div class="section-heading">
+          <p class="section-index">The three findings</p>
+          <h2 id="findings-title">What changes when the settings change?</h2>
         </div>
-        <p class="findings-note">Each percentage compares an alternative model with last-touch <strong>within the same window</strong>. These are differences in attributed order credit, not measured changes in actual orders caused by a channel.</p>
-        <p class="chapter-bridge">The following three chapters explain how the comparisons were constructed, examine the evidence behind these findings, and interpret what they suggest for assessing channel performance.</p>
+        <div class="findings-list">
+          <article>
+            <span class="finding-number" aria-hidden="true">01</span>
+            <h3>The model can reverse the comparison.</h3>
+            <p>Paid Search: <strong>+12.09%</strong> under algorithmic, <strong>−5.71%</strong> under linear at 30 days.</p>
+            <a class="text-link" href="#model-evidence">Compare models <span aria-hidden="true">↓</span></a>
+          </article>
+          <article>
+            <span class="finding-number" aria-hidden="true">02</span>
+            <h3>Less credit can leave rank unchanged.</h3>
+            <p>Email: <strong>−43.90%</strong> algorithmic credit at 30 days, yet first in all six settings.</p>
+            <a class="text-link" href="#rank-evidence">Compare ranks <span aria-hidden="true">↓</span></a>
+          </article>
+          <article>
+            <span class="finding-number" aria-hidden="true">03</span>
+            <h3>The window can change classification.</h3>
+            <p>SMS: <strong>−7.10%</strong> at 14 days and <strong>−17.47%</strong> at 30 days under algorithmic attribution.</p>
+            <a class="text-link" href="#windows">Compare windows <span aria-hidden="true">↓</span></a>
+          </article>
+        </div>
+        <p class="findings-note">Each percentage compares with last-touch within the same window. Changes in attributed credit are not measured changes in actual orders caused by a channel.</p>
       </div>
     </section>
 
-    <section class="section container chapter" id="setup" aria-labelledby="setup-title">
-      <div class="section-heading"><p class="section-index">Chapter 01 / Study design</p><h2 id="setup-title">How the comparison was set up.</h2><p class="section-intro">To examine the influence of the final-interaction rule, I compared last-touch with two alternatives. The attribution model determines how credit is allocated; the lookback window determines which preceding interactions are eligible.</p></div>
-      <div class="model-definitions">
-          <article><span class="model-dot last"></span><h3>Last-touch</h3><p>All credit goes to the most recent eligible touchpoint before the order.</p></article>
-          <article><span class="model-dot linear"></span><h3>Linear</h3><p>Credit is shared equally across eligible touchpoints.</p></article>
-          <article><span class="model-dot algorithmic"></span><h3>Algorithmic</h3><p>Adobe uses a statistical allocation method to distribute credit across eligible interactions. This study compares the exported allocations.</p></article>
+    <section class="section chapter" id="setup" aria-labelledby="setup-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-index">01 / Study design</p>
+          <h2 id="setup-title">How the comparison works.</h2>
+          <p class="section-intro">Three attribution models, each measured with a 14-day and a 30-day lookback. The model allocates order credit; the window determines which preceding interactions are eligible.</p>
         </div>
-      <p class="source-note">Model definitions: <a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/attribution/models">Adobe attribution components</a> and <a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/attribution/algorithmic">algorithmic attribution</a>.</p>
-      <div class="explainer">
+        <div class="model-definitions">
+          <article><span class="model-dot last" aria-hidden="true"></span><h3>Last-touch</h3><p>All credit goes to the final eligible interaction before the order.</p></article>
+          <article><span class="model-dot linear" aria-hidden="true"></span><h3>Linear</h3><p>Credit is shared equally across eligible interactions.</p></article>
+          <article><span class="model-dot algorithmic" aria-hidden="true"></span><h3>Algorithmic</h3><p>Adobe’s statistical method allocates the credit. This study compares the exported results.</p></article>
+        </div>
+        <p class="study-scope">Total Orders <span aria-hidden="true">·</span> Person scope <span aria-hidden="true">·</span> 16 channels <span aria-hidden="true">·</span> May 2026 demo exports</p>
+        <details class="method-overview" id="study-details">
+          <summary>Journey example, calculation definitions, and source files</summary>
+          <div class="detail-body">
+            <div class="research-question">
+              <p class="eyebrow">Research question</p>
+              <p>How does using last-touch attribution shape the assessment of marketing channel performance, and how does that assessment change under alternative models and lookback windows?</p>
+            </div>
+            <p class="source-note">Model definitions: <a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/attribution/models">Adobe attribution components</a> and <a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/cja-workspace/attribution/algorithmic">algorithmic attribution</a>.</p>
+            <div class="explainer chart-panel">
           <div class="panel-heading"><div><p class="eyebrow">A small example</p><h3>Follow one illustrative journey.</h3></div><span class="discrete-label">Illustration, not observed customer data</span></div>
           <div class="control-row">
             <fieldset class="segmented"><legend>Allocation rule</legend><label><input type="radio" name="example-model" value="last_touch" checked><span>Last-touch</span></label><label><input type="radio" name="example-model" value="linear"><span>Linear</span></label></fieldset>
@@ -77,83 +121,146 @@
           <p class="example-summary" id="example-summary" aria-live="polite">Last-touch assigns all the credit to Email. All three interactions are within the 30-day window.</p>
           <p class="micro">The algorithmic model is explained above. Its allocations cannot be reconstructed from this invented journey or from the aggregate channel exports.</p>
         </div>
-      <div class="chapter-block" id="data">
-        <h3>The data and comparison scope</h3>
-        <div class="reading-grid">
-          <div class="reading-copy"><p>The analysis uses four channel-level exports from Adobe CJA’s <strong>Omni-Channel - Multi-Industry demo</strong>. The reporting period is May 1–31, 2026, and every attribution setting uses the <strong>Person</strong> container, which considers interactions at person scope rather than within a single session.</p><p>A 14-day or 30-day lookback is measured backwards from each order. It is an eligibility window, rather than a different reporting month. All 16 channels are retained, including digital advertising, messaging, search, and offline channels, to preserve the mix across which credit is allocated.</p><p>The exports already contain the three model outputs. I cleaned and joined them by channel using Python, then calculated relative credit changes and order-volume ranks. This is a descriptive comparison of exported allocations.</p></div>
-          <dl class="data-facts"><div><dt>Conversion metric</dt><dd>Total Orders</dd></div><div><dt>Attribution settings</dt><dd>Last-touch, linear, algorithmic × 14 and 30 days</dd></div><div><dt>Additional context</dt><dd>Reported revenue, acquisition and closure metrics, conversion environments</dd></div><div><dt>Rows analysed</dt><dd>16 unique marketing channels, with no missing fields in the joined master table</dd></div></dl>
-        </div>
-        <p class="method-summary">For each channel, relative credit change is calculated as <strong>100 × (alternative orders − last-touch orders) / last-touch orders</strong>, using the same window for both inputs. A +20% result therefore means 1.2 times the baseline credit. Calculations retain full precision; displayed percentages are rounded to two decimal places.</p>
-        <details class="method-detail" id="method"><summary>Data preparation, validation, and source files</summary><div class="detail-body"><div class="method-grid"><article><h3>Preparation</h3><ol><li>Read the four CSV exports after their metadata headers.</li><li>Remove exported totals and breakdown-label rows, and trim channel names.</li><li>Join on marketing channel, keeping the attribution export as the 16-channel base.</li><li>Calculate comparisons from full-precision values. Round only displayed results.</li></ol></article><article><h3>Checks</h3><ul><li>All 16 channel names are unique; the joined fields are complete.</li><li>Each of the three model totals agrees within its lookback window.</li><li>The five environment counts sum to each channel’s 30-day last-touch orders.</li><li>The website’s six-setting orders match the source attribution CSV.</li></ul></article></div><div class="table-wrap"><table class="source-table"><caption>Four source exports used in this analysis</caption><thead><tr><th scope="col">Export</th><th scope="col">What it contributes</th><th scope="col">File</th></tr></thead><tbody><tr><th scope="row">Models and lookback windows</th><td>Order credit under six settings</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/AP%20Marketing%20Channel%20Performance%20-%20Comparing%20models%20and%20lookback%20windows.csv">View CSV ↗</a></td></tr><tr><th scope="row">Acquisition vs. closure</th><td>Exported lifecycle context metrics</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/MP%20Marketing%20Acquisition%20vs-%20Closure.csv">View CSV ↗</a></td></tr><tr><th scope="row">Performance by channel</th><td>Last-touch orders and reported revenue</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/MP%20Marketing%20Performance%20by%20Channel.csv">View CSV ↗</a></td></tr><tr><th scope="row">Performance by conversion channel</th><td>Where credited orders were completed</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/MP%20Marketing%20Performance%20by%20Conversion%20Channel.csv">View CSV ↗</a></td></tr></tbody></table></div><p class="micro">The joined master table contains 16 unique channels with complete fields. Model totals agree within each lookback window, although the totals differ between windows. That difference is examined in Chapter 02.</p></div></details>
-        <details class="method-detail"><summary>Calculation definitions and glossary</summary><div class="detail-body"><div class="formula-list"><div><h4>Relative credit change (%)</h4><code>100 × (alternative orders − last-touch orders) / last-touch orders</code><p>Both inputs use the same window. A +20% value means the alternative model gives 1.2 times the last-touch order credit.</p></div><div><h4>Order-volume rank</h4><p>Order channels from most to least attributed orders separately for each model and window. A positive rank change means moving closer to rank 1.</p></div><div><h4>Conversion environment share (%)</h4><code>100 × environment orders / sum of the channel’s five environment counts</code><p>This denominator equals the channel’s 30-day last-touch attributed orders.</p></div><div><h4>Revenue per attributed order</h4><code>reported total revenue / 30-day last-touch attributed orders</code><p>The export does not identify the currency or fully document the revenue metric’s configuration.</p></div><div><h4>Correlation</h4><p>Pearson uses the full-precision Lifecycle Index and algorithmic relative credit change. Spearman uses their average ranks. Both include all 16 channels and the 30-day attribution comparison.</p></div></div><dl class="glossary"><div><dt>Attributed orders</dt><dd>Order credit assigned to a channel by a specified attribution setting. Fractional credit can produce decimal values.</dd></div><div><dt>Percentage change</dt><dd>A relative difference divided by the last-touch baseline, expressed out of 100.</dd></div><div><dt>Percentage points (pp)</dt><dd>The arithmetic difference between two percentages. A change from 20% to 30% is 10 percentage points.</dd></div><div><dt>Container</dt><dd>The scope used to group interactions for attribution. This export uses Person.</dd></div><div><dt>Conversion environment</dt><dd>The order-completion setting: Mobile App, Website, Mobile Web, Point of Sale, or Call Center.</dd></div><div><dt>Correlation</dt><dd>A descriptive measure of association. Its value does not establish cause and effect.</dd></div></dl></div></details>
+            <div class="chapter-block" id="data">
+              <h3>The data and comparison scope</h3>
+              <div class="reading-grid">
+                <div class="reading-copy">
+                  <p>I cleaned and joined four channel-level exports by marketing channel using Python, then calculated relative credit changes and order-volume ranks. The exports already contain the model outputs; this is a descriptive comparison of those allocations.</p>
+                  <p>Every setting uses the <strong>Person</strong> container, which considers interactions at person scope rather than within one session. The lookback is measured backwards from each order. All 16 channels are retained, including digital advertising, messaging, search, and offline channels.</p>
+                </div>
+                <dl class="data-facts">
+                  <div><dt>Conversion metric</dt><dd>Total Orders</dd></div>
+                  <div><dt>Attribution settings</dt><dd>Last-touch, linear, algorithmic × 14 and 30 days</dd></div>
+                  <div><dt>Additional context</dt><dd>Reported revenue, acquisition and closure metrics, conversion environments</dd></div>
+                  <div><dt>Rows analysed</dt><dd>16 unique channels, with no missing fields in the joined master table</dd></div>
+                </dl>
+              </div>
+              <p class="method-summary">Calculations retain full precision; displayed percentages are rounded to two decimal places. A lookback window changes interaction eligibility, not the reporting month.</p>
+              <details class="method-detail" id="method"><summary>Data preparation, validation, and source files</summary><div class="detail-body"><div class="method-grid"><article><h3>Preparation</h3><ol><li>Read the four CSV exports after their metadata headers.</li><li>Remove exported totals and breakdown-label rows, and trim channel names.</li><li>Join on marketing channel, keeping the attribution export as the 16-channel base.</li><li>Calculate comparisons from full-precision values. Round only displayed results.</li></ol></article><article><h3>Checks</h3><ul><li>All 16 channel names are unique; the joined fields are complete.</li><li>Each of the three model totals agrees within its lookback window.</li><li>The five environment counts sum to each channel’s 30-day last-touch orders.</li><li>The website’s six-setting orders match the source attribution CSV.</li></ul></article></div><div class="table-wrap"><table class="source-table"><caption>Four source exports used in this analysis</caption><thead><tr><th scope="col">Export</th><th scope="col">What it contributes</th><th scope="col">File</th></tr></thead><tbody><tr><th scope="row">Models and lookback windows</th><td>Order credit under six settings</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/AP%20Marketing%20Channel%20Performance%20-%20Comparing%20models%20and%20lookback%20windows.csv">View CSV ↗</a></td></tr><tr><th scope="row">Acquisition vs. closure</th><td>Exported lifecycle context metrics</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/MP%20Marketing%20Acquisition%20vs-%20Closure.csv">View CSV ↗</a></td></tr><tr><th scope="row">Performance by channel</th><td>Last-touch orders and reported revenue</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/MP%20Marketing%20Performance%20by%20Channel.csv">View CSV ↗</a></td></tr><tr><th scope="row">Performance by conversion channel</th><td>Where credited orders were completed</td><td><a href="https://github.com/Lida-Gheidary/Program-Project/blob/main/Data-raw/MP%20Marketing%20Performance%20by%20Conversion%20Channel.csv">View CSV ↗</a></td></tr></tbody></table></div></div></details>
+              <details class="method-detail" id="calculation-definitions"><summary>Calculation definitions and glossary</summary><div class="detail-body"><div class="formula-list"><div><h4>Relative credit change (%)</h4><code>100 × (alternative orders − last-touch orders) / last-touch orders</code><p>Both inputs use the same window. A +20% value means the alternative model gives 1.2 times the last-touch order credit.</p></div><div><h4>Order-volume rank</h4><p>Order channels from most to least attributed orders separately for each model and window. A positive rank change means moving closer to rank 1.</p></div><div><h4>Conversion environment share (%)</h4><code>100 × environment orders / sum of the channel’s five environment counts</code><p>This denominator equals the channel’s 30-day last-touch attributed orders.</p></div><div><h4>Revenue per attributed order</h4><code>reported total revenue / 30-day last-touch attributed orders</code><p>The export does not identify the currency or fully document the revenue metric’s configuration.</p></div><div><h4>Correlation</h4><p>Pearson uses the full-precision Lifecycle Index and algorithmic relative credit change. Spearman uses their average ranks. Both include all 16 channels and the 30-day attribution comparison.</p></div></div><dl class="glossary"><div><dt>Attributed orders</dt><dd>Order credit assigned to a channel by a specified attribution setting. Fractional credit can produce decimal values.</dd></div><div><dt>Percentage change</dt><dd>A relative difference divided by the last-touch baseline, expressed out of 100.</dd></div><div><dt>Percentage points (pp)</dt><dd>The arithmetic difference between two percentages. A change from 20% to 30% is 10 percentage points.</dd></div><div><dt>Container</dt><dd>The scope used to group interactions for attribution. This export uses Person.</dd></div><div><dt>Conversion environment</dt><dd>The order-completion setting: Mobile App, Website, Mobile Web, Point of Sale, or Call Center.</dd></div><div><dt>Correlation</dt><dd>A descriptive measure of association. Its value does not establish cause and effect.</dd></div></dl></div></details>
+              <p class="platform-context">Platform defaults vary: <a href="https://support.google.com/analytics/answer/9756891?hl=en">Google Analytics 4</a> defaults to data-driven attribution for event-scoped key-event reporting; <a href="https://experienceleague.adobe.com/en/docs/analytics-platform/using/compare-aa-cja/ga-to-cja/compare-data">CJA</a> allows attribution settings at the metric and report level. This study uses last-touch as its comparison baseline.</p>
+            </div>
+          </div>
+        </details>
+        <div class="section-next"><a class="text-link" href="#results">Next: explore the evidence <span aria-hidden="true">→</span></a></div>
       </div>
-      <p class="chapter-bridge">With the rules and denominator established, the next comparison asks how much the same channel’s reported credit changes, and whether that also changes its position in the channel mix.</p>
     </section>
 
-    <section class="section section-tinted chapter" id="results" aria-labelledby="results-title">
+    <section class="section chapter" id="results" aria-labelledby="results-title">
       <div class="container">
-        <div class="section-heading"><p class="section-index">Chapter 02 / Results</p><h2 id="results-title">What changes when the attribution settings change?</h2><p class="section-intro">The model comparison addresses the first finding: a channel’s assessment depends on the allocation rule. Rankings and lookback comparisons then show which aspects of that assessment remain consistent.</p></div>
-        <div id="model-evidence" class="evidence-block">
-          <h3>The model changes the allocation, sometimes in opposite directions.</h3>
-          <div class="prose"><p>At 30 days, algorithmic attribution gives Paid Search <strong>12.09% more</strong> order credit than last-touch, while linear gives <strong>5.71% less</strong>. The same directional disagreement appears at 14 days. For this channel, the interpretation changes according to which alternative is selected.</p><p>Other channels show a recurring direction. Direct Mail receives more credit under both alternatives at both windows. At 30 days, its increases are <strong>182.78%</strong> under algorithmic attribution and <strong>149.05%</strong> under linear. The chart places these examples within the full 16-channel comparison.</p></div>
-          <div class="chart-controls">
-          <fieldset class="segmented"><legend>Compare with last-touch</legend><label><input type="radio" name="comparison-model" value="algorithmic" checked><span>Algorithmic</span></label><label><input type="radio" name="comparison-model" value="linear"><span>Linear</span></label></fieldset>
-          <fieldset class="segmented"><legend>Lookback window</legend><label><input type="radio" name="comparison-window" value="30" checked><span>30 days</span></label><label><input type="radio" name="comparison-window" value="14"><span>14 days</span></label></fieldset>
-          <label class="select-control">Order channels by<select id="comparison-sort"><option value="change">Largest credit increase</option><option value="baseline">Last-touch order volume</option><option value="name">Channel name</option></select></label>
+        <div class="section-heading">
+          <p class="section-index">02 / Results</p>
+          <h2 id="results-title">Explore the evidence.</h2>
+          <nav class="evidence-nav" aria-label="Results comparisons">
+            <a href="#model-evidence">Models</a><a href="#rank-evidence">Rankings</a><a href="#windows">Lookback windows</a>
+          </nav>
         </div>
-          <figure class="chart-figure">
-          <figcaption><h3 id="comparison-title">Algorithmic versus last-touch · 30 days</h3><p>Relative change in attributed orders (%)</p></figcaption>
-          <div id="comparison-chart" class="chart-host"></div>
-          <p class="chart-summary" id="comparison-summary" aria-live="polite"></p>
-        </figure>
-          <p class="threshold-note">Positive values mean more order credit than last-touch; negative values mean less. The ±10% bands are descriptive thresholds chosen for this study, rather than statistical significance tests or measures of business value.</p>
-          <details class="data-detail"><summary>Read the numbers behind this chart</summary><div class="table-wrap"><table id="comparison-table"><caption id="comparison-table-caption">Channel attribution comparison</caption><thead><tr><th scope="col">Channel</th><th scope="col">Last-touch orders</th><th scope="col">Alternative orders</th><th scope="col">Change (%)</th><th scope="col">Credit band</th></tr></thead><tbody></tbody></table></div></details>
+        <div id="model-evidence" class="evidence-block">
+          <h3>How the model changes order credit.</h3>
+          <div class="prose">
+            <p>Compare each alternative with last-touch within the same lookback window. Paid Search’s directional disagreement also appears at 14 days.</p>
+            <p>Direct Mail receives more credit under both alternatives at both windows. At 30 days, its increases are <strong>182.78%</strong> under algorithmic attribution and <strong>149.05%</strong> under linear.</p>
+          </div>
+          <div class="chart-panel">
+            <div class="chart-controls">
+              <fieldset class="segmented"><legend>Compare with last-touch</legend><label><input type="radio" name="comparison-model" value="algorithmic" checked><span>Algorithmic</span></label><label><input type="radio" name="comparison-model" value="linear"><span>Linear</span></label></fieldset>
+              <fieldset class="segmented"><legend>Lookback window</legend><label><input type="radio" name="comparison-window" value="30" checked><span>30 days</span></label><label><input type="radio" name="comparison-window" value="14"><span>14 days</span></label></fieldset>
+              <label class="select-control">Order channels by<select id="comparison-sort"><option value="change">Largest credit increase</option><option value="baseline">Last-touch order volume</option><option value="name">Channel name</option></select></label>
+            </div>
+            <figure class="chart-figure">
+              <figcaption><h3 id="comparison-title">Algorithmic versus last-touch · 30 days</h3><p>Relative change in attributed orders (%)</p></figcaption>
+              <p class="scroll-hint">Scroll horizontally to view the full chart.</p>
+              <div class="plot-scroll" tabindex="0" role="region" aria-label="Scrollable channel credit comparison"><div id="comparison-chart" class="chart-host"></div></div>
+              <p class="chart-summary" id="comparison-summary" aria-live="polite"></p>
+            </figure>
+            <p class="threshold-note">Positive values mean more order credit than last-touch; negative values mean less. The ±10% bands are descriptive thresholds chosen for this study, not statistical significance tests or measures of business value.</p>
+            <details class="data-detail"><summary>View the full data table</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Channel credit data"><table id="comparison-table"><caption id="comparison-table-caption">Channel attribution comparison</caption><thead><tr><th scope="col">Channel</th><th scope="col">Last-touch orders</th><th scope="col">Alternative orders</th><th scope="col">Change (%)</th><th scope="col">Credit band</th></tr></thead><tbody></tbody></table></div></details>
+          </div>
         </div>
         <div class="chapter-block" id="rank-evidence">
-          <h3>A change in credit does not necessarily change channel rank.</h3>
-          <div class="prose"><p>Email illustrates the second finding. Its algorithmic order credit is <strong>43.90% lower</strong> than last-touch at 30 days, whereas linear gives it <strong>2.35% more</strong>. Despite those differences, Email remains first by attributed orders in all six settings.</p><p>Direct Mail illustrates the role of the baseline volume. Although it has the largest relative algorithmic increase at 30 days, it moves only from <strong>14th to 13th</strong> by attributed orders; linear places it 10th. Percentage change describes sensitivity to the attribution rule, while rank describes relative order volume.</p></div>
-          <details class="data-detail"><summary>Compare all channel ranks across models</summary><div class="table-wrap"><table id="rank-table"><caption id="rank-caption">Order-volume rankings · 30 days</caption><thead><tr><th scope="col">Channel</th><th scope="col">Last-touch</th><th scope="col">Linear</th><th scope="col">Algorithmic</th><th scope="col">Algorithmic rank change</th></tr></thead><tbody></tbody></table></div><p class="micro">Rank 1 means the most attributed orders. This table follows the lookback window selected in the model comparison above.</p></details>
+          <h3>How credit changes relate to channel rank.</h3>
+          <div class="prose">
+            <p>At 30 days, linear attribution gives Email <strong>2.35% more</strong> credit than last-touch. Its first-place rank holds despite the different allocations.</p>
+            <p>Direct Mail’s large percentage increase begins from a smaller baseline. At 30 days, it moves from <strong>14th to 13th</strong> under algorithmic attribution; linear places it <strong>10th</strong>.</p>
+          </div>
+          <div class="chart-panel table-panel">
+            <details class="data-detail"><summary>View all 16 channel rankings</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Channel ranking data"><table id="rank-table"><caption id="rank-caption">Order-volume rankings · 30 days</caption><thead><tr><th scope="col">Channel</th><th scope="col">Last-touch</th><th scope="col">Linear</th><th scope="col">Algorithmic</th><th scope="col">Algorithmic rank change</th></tr></thead><tbody></tbody></table></div><p class="micro">Rank 1 means the most attributed orders. This table uses the lookback window selected in the <a href="#model-evidence">model comparison above</a>.</p></details>
+          </div>
         </div>
         <div class="chapter-block" id="windows">
-          <h3>The lookback window changes the size of the comparison.</h3>
-          <div class="prose"><p>The third finding concerns eligibility over time. Display receives <strong>27.74% more</strong> algorithmic credit than last-touch at 14 days and <strong>42.55% more</strong> at 30 days. Email’s decrease grows from <strong>29.51%</strong> to <strong>43.90%</strong>. The direction holds for both channels, but its magnitude changes.</p><p>For SMS, the difference is <strong>−7.10%</strong> at 14 days and <strong>−17.47%</strong> at 30 days. Under the study’s ±10% bands, that moves it from “within ±10%” to “lower credit.” Each point in the chart below uses last-touch from its own window as the denominator.</p></div>
-          <div class="chart-controls"><fieldset class="segmented"><legend>Alternative model</legend><label><input type="radio" name="window-model" value="algorithmic" checked><span>Algorithmic</span></label><label><input type="radio" name="window-model" value="linear"><span>Linear</span></label></fieldset><div class="chart-legend"><span><i class="legend-point window14"></i>14 days</span><span><i class="legend-point window30"></i>30 days</span></div></div>
-          <figure class="chart-figure"><figcaption><h3 id="window-title">Algorithmic credit change · two lookback windows</h3><p>Relative change versus last-touch within each window (%)</p></figcaption><div id="window-chart" class="chart-host"></div><p id="window-summary" class="chart-summary" aria-live="polite"></p></figure>
-          <details class="data-detail"><summary>See the full window comparison table</summary><div class="table-wrap"><table id="window-table"><caption id="window-table-caption">Algorithmic versus last-touch by lookback window</caption><thead><tr><th scope="col">Channel</th><th scope="col">14-day change (%)</th><th scope="col">30-day change (%)</th><th scope="col">Difference (pp)</th></tr></thead><tbody></tbody></table></div></details>
-          <aside class="important-note"><h4>The reported order totals also differ across windows.</h4><p>The exports total <strong>231,678</strong> orders at 14 days and <strong>236,183</strong> at 30 days, an increase of <strong>4,505</strong> or <strong>1.94%</strong> relative to the 14-day total. All three models agree on the total within each window.</p><p>The aggregate files do not explain the difference between windows. Consequently, this comparison cannot establish that an identical set of orders was merely reallocated. The same-window percentages describe the reported results under each setting.</p></aside>
+          <h3>How the lookback window changes the comparison.</h3>
+          <div class="prose">
+            <p>Display’s algorithmic increase grows from <strong>27.74%</strong> at 14 days to <strong>42.55%</strong> at 30 days. Email’s decrease grows from <strong>29.51%</strong> to <strong>43.90%</strong>. The direction holds, but the magnitude changes.</p>
+            <p>SMS crosses the study’s −10% boundary, moving from “within ±10%” to “lower credit.” Each point below uses last-touch from its own window as the denominator.</p>
+          </div>
+          <div class="chart-panel">
+            <div class="chart-controls">
+              <fieldset class="segmented"><legend>Alternative model</legend><label><input type="radio" name="window-model" value="algorithmic" checked><span>Algorithmic</span></label><label><input type="radio" name="window-model" value="linear"><span>Linear</span></label></fieldset>
+              <div class="chart-legend"><span><i class="legend-point window14" aria-hidden="true"></i>14 days</span><span><i class="legend-point window30" aria-hidden="true"></i>30 days</span></div>
+            </div>
+            <figure class="chart-figure">
+              <figcaption><h3 id="window-title">Algorithmic credit change · two lookback windows</h3><p>Relative change versus last-touch within each window (%)</p></figcaption>
+              <p class="scroll-hint">Scroll horizontally to view the full chart.</p>
+              <div class="plot-scroll" tabindex="0" role="region" aria-label="Scrollable lookback window comparison"><div id="window-chart" class="chart-host"></div></div>
+              <p id="window-summary" class="chart-summary" aria-live="polite"></p>
+            </figure>
+            <details class="data-detail"><summary>View the full window comparison table</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Lookback window data"><table id="window-table"><caption id="window-table-caption">Algorithmic versus last-touch by lookback window</caption><thead><tr><th scope="col">Channel</th><th scope="col">14-day change (%)</th><th scope="col">30-day change (%)</th><th scope="col">Difference (pp)</th></tr></thead><tbody></tbody></table></div></details>
+          </div>
+          <aside class="important-note">
+            <h4>The reported order totals also differ across windows.</h4>
+            <p>The exports total <strong>231,678</strong> orders at 14 days and <strong>236,183</strong> at 30 days: an increase of <strong>4,505</strong>, or <strong>1.94%</strong> relative to the 14-day total. All three models agree on the total within each window.</p>
+            <p>The aggregate files do not explain this difference. The comparison therefore cannot establish that an identical set of orders was merely reallocated. The same-window percentages describe the reported results under each setting.</p>
+          </aside>
         </div>
-        <p class="chapter-bridge">Together, these results distinguish three aspects of the performance picture: the direction of a model comparison, the channel’s relative position, and the sensitivity of the result to the lookback window. They provide the basis for the interpretation that follows.</p>
+        <div class="section-next"><a class="text-link" href="#interpretation">Next: interpret the results <span aria-hidden="true">→</span></a></div>
       </div>
     </section>
 
-    <section class="section container chapter" id="interpretation" aria-labelledby="interpretation-title">
-      <div class="section-heading"><p class="section-index">Chapter 03 / Interpretation</p><h2 id="interpretation-title">What this study suggests for assessing channel performance.</h2><p class="section-intro">Within this dataset, reported channel performance depends partly on the attribution settings used to describe it. The findings suggest three considerations when interpreting attributed order results.</p></div>
-      <div class="interpretation-copy">
-        <h3>Attribution settings qualify the performance comparison.</h3>
-        <p>The Paid Search result shows that a statement such as “this channel receives more credit” is conditional on the chosen model. Algorithmic and linear attribution point in opposite directions relative to last-touch. This suggests that the metric, model, container, and lookback window form part of the evidence behind an assessment, because changing them can change the reported comparison.</p>
-        <h3>Relative change and channel position describe different aspects of performance.</h3>
-        <p>Email’s lower algorithmic credit does not remove its leading rank, while Direct Mail’s large percentage increase begins from a smaller baseline. These findings suggest that credit sensitivity is more informative when considered alongside attributed order volume and rank. A percentage increase or decrease alone does not describe the channel’s full position in this mix.</p>
-        <h3>Consistency across settings supports a more qualified interpretation.</h3>
-        <p>Direct Mail receives more credit under both alternatives at both windows, so the direction recurs across the settings examined. Its magnitude still varies. SMS shows how a window-dependent magnitude can also change a threshold-based classification. The study therefore suggests a distinction between observations that recur across settings and labels that depend on a particular window or boundary. Recurrence here describes consistency within these exports; it does not establish causal contribution.</p>
-      </div>
-      <div class="study-boundary">
-        <h3>The scope of this interpretation</h3>
-        <p>The study compares aggregate outputs from one month of demo data. Alternative models provide comparison points, but the exports do not establish which allocation best represents a channel’s incremental effect on orders.</p>
-        <p>Reported revenue, conversion environments, and lifecycle metrics provide additional context, shown below. Their incomplete definitions limit further interpretation. Journey-level records and reporting configuration would be needed to examine the causes of the allocation differences; cost, margin, and experimental evidence would be needed to assess economic or incremental performance.</p>
-      </div>
-      <details class="supporting-detail" id="context">
+    <section class="section chapter" id="interpretation" aria-labelledby="interpretation-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-index">03 / Interpretation</p>
+          <h2 id="interpretation-title">What to take from the comparison.</h2>
+        </div>
+        <div class="takeaways">
+          <article><span class="takeaway-number" aria-hidden="true">01</span><div><h3>State the attribution settings.</h3><p>A reported performance comparison depends on its metric, model, container, and lookback window. These settings form part of the evidence behind the assessment.</p></div></article>
+          <article><span class="takeaway-number" aria-hidden="true">02</span><div><h3>Read credit change alongside volume and rank.</h3><p>A percentage change describes sensitivity to the allocation rule. Baseline volume and rank show the channel’s position in the mix. Together, they provide a fuller view than a percentage alone.</p></div></article>
+          <article><span class="takeaway-number" aria-hidden="true">03</span><div><h3>Check what recurs across settings.</h3><p>A recurring direction supports a more consistent interpretation within these exports. Its magnitude can still vary, and a threshold-based label can depend on the window or boundary chosen.</p></div></article>
+        </div>
+        <div class="study-boundary">
+          <h3>The scope of this interpretation</h3>
+          <p>This descriptive comparison covers one month of aggregate demo data. It does not establish which allocation best represents a channel’s incremental effect on orders.</p>
+          <p>Journey-level records and reporting configuration would be needed to investigate the allocation differences. Cost, margin, and experimental evidence would be needed to assess economic or incremental performance. The supporting metrics below add context, but their incomplete definitions limit further interpretation.</p>
+        </div>
+        <details class="supporting-detail" id="context">
         <summary>Supporting analysis: conversion environments, revenue, and lifecycle metrics</summary>
-        <div class="detail-body"><p class="supporting-intro">These measures describe the channel mix alongside the attribution results. They do not determine which attribution allocation is more accurate.</p><div class="context-intro"><div><h3>Where attributed orders were completed</h3><p>“Paid Search” describes a marketing channel. “Call Center” describes where an order was completed. In the last-touch, 30-day breakdown, Call Center has the largest share for <strong>14 of 16 channels</strong>.</p><p>For Email, Website is the largest environment at <strong>31.08%</strong>, although it is not a majority. For In-App Messaging, Mobile App accounts for <strong>58.64%</strong>. These patterns add operational context to the attribution comparison.</p></div><figure class="context-figure"><figcaption><h3>Where selected channels’ orders were completed</h3><p>Shares of last-touch attributed orders · 30 days</p></figcaption><div id="environment-chart"></div><div id="environment-legend" class="chart-legend"></div></figure></div><div class="context-pair">
+        <div class="detail-body"><p class="supporting-intro">These measures describe the channel mix alongside the attribution results. They do not determine which attribution allocation is more accurate.</p><div class="context-intro"><div><h3>Where attributed orders were completed</h3><p>“Paid Search” describes a marketing channel. “Call Center” describes where an order was completed. In the last-touch, 30-day breakdown, Call Center has the largest share for <strong>14 of 16 channels</strong>.</p><p>For Email, Website is the largest environment at <strong>31.08%</strong>, although it is not a majority. For In-App Messaging, Mobile App accounts for <strong>58.64%</strong>. These patterns add operational context to the attribution comparison.</p></div><figure class="context-figure chart-panel"><figcaption><h3>Where selected channels’ orders were completed</h3><p>Shares of last-touch attributed orders · 30 days</p></figcaption><div id="environment-chart"></div><div id="environment-legend" class="chart-legend"></div></figure></div><div class="context-pair">
           <article><p class="eyebrow">Revenue context</p><h3>Revenue per attributed order</h3><p>Reported revenue divided by last-touch attributed orders provides another view of the channel mix. For example, the derived values are <strong>909.44</strong> for Paid Search and <strong>826.63</strong> for Email, in the export’s unspecified revenue units.</p><p>These figures are not ROAS or profit. Advertising costs, margins, and the revenue metric’s detailed attribution definition are not included in the exports.</p></article>
           <article><p class="eyebrow">Supporting analysis</p><h3>Lifecycle context and credit change</h3><p>Across 16 channels, the exported Lifecycle Index has a <strong>Pearson correlation of 0.547</strong> and a <strong>Spearman correlation of 0.335</strong> with the 30-day algorithmic credit change.</p><p>The positive association is descriptive and depends on the measure of association. It does not establish a channel’s role in a customer journey or explain why the model allocates credit differently.</p></article>
-        </div><p class="metric-note"><strong>Metric definition limit:</strong> the export labels Acquisition Rate, Closure Rate, and Lifecycle Index are retained. The underlying CJA definitions of the first two are not supplied. In the data, Lifecycle Index equals Acquisition Rate minus Closure Rate. This study does not treat those fields as verified customer conversion probabilities.</p><details class="data-detail"><summary>Inspect the supporting metrics for all 16 channels</summary><div class="table-wrap"><table id="context-table"><caption>Supporting metrics · last-touch, 30-day orders and reported revenue</caption><thead><tr><th scope="col">Channel</th><th scope="col">Revenue / order</th><th scope="col">Largest environment</th><th scope="col">Share (%)</th><th scope="col">Acquisition (%)</th><th scope="col">Closure (%)</th><th scope="col">Lifecycle difference (pp)</th></tr></thead><tbody></tbody></table></div></details></div>
+        </div><p class="metric-note"><strong>Metric definition limit:</strong> the export labels Acquisition Rate, Closure Rate, and Lifecycle Index are retained. The underlying CJA definitions of the first two are not supplied. In the data, Lifecycle Index equals Acquisition Rate minus Closure Rate. This study does not treat those fields as verified customer conversion probabilities.</p><details class="data-detail chart-panel table-panel"><summary>Inspect the supporting metrics for all 16 channels</summary><div class="table-wrap"><table id="context-table"><caption>Supporting metrics · last-touch, 30-day orders and reported revenue</caption><thead><tr><th scope="col">Channel</th><th scope="col">Revenue / order</th><th scope="col">Largest environment</th><th scope="col">Share (%)</th><th scope="col">Acquisition (%)</th><th scope="col">Closure (%)</th><th scope="col">Lifecycle difference (pp)</th></tr></thead><tbody></tbody></table></div></details></div>
       </details>
-      <div class="answer-block"><p class="eyebrow">Returning to the research question</p><p>In these demo exports, using last-touch produces a different view of channel performance from the alternative models. The differences concern order credit, some rankings, and the size of the comparison across lookback windows. This study suggests that attribution settings and the consistency of results across them are relevant considerations when interpreting reported channel performance.</p></div>
-      <div class="resources"><h3>Data and project sources</h3><div class="resource-links"><a class="button" href="#" id="download-comparisons">Download all six comparisons <span aria-hidden="true">↓</span></a><a class="button secondary" href="#" id="download-master">Full-precision master CSV <span aria-hidden="true">↓</span></a><a class="button secondary" href="https://github.com/Lida-Gheidary/Program-Project">GitHub repository <span aria-hidden="true">↗</span></a></div><p>The repository contains the original exports, Python analysis, and SQL queries. The downloads provide all six attribution settings and the full-precision master table used for this page. Source export links and calculation definitions are available in Chapter 01.</p></div>
+        <div class="answer-block">
+          <p class="eyebrow">The takeaway</p>
+          <p>In these demo exports, last-touch produces a different view of channel performance. Assessing that view requires both the attribution settings and the consistency of results across them.</p>
+        </div>
+        <div class="resources">
+          <h3>Data and project sources</h3>
+          <div class="resource-links">
+            <a class="button" href="#" id="download-comparisons">Download all six comparisons <span aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="#" id="download-master">Full-precision master CSV <span aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="https://github.com/Lida-Gheidary/Program-Project">GitHub repository <span aria-hidden="true">↗</span></a>
+          </div>
+          <p>The repository contains the original exports, Python analysis, and SQL queries. The downloads provide the six-setting comparison and full-precision master table. Export links and calculation definitions are under <a href="#study-details">Study design</a>.</p>
+        </div>
+      </div>
     </section>
   </main>
-  <footer class="site-footer container"><div><strong>Lida Gheidary</strong><p>Marketing channel performance &amp; attribution</p></div><div><a href="https://lida-gheidary.github.io/Portfolio/">Portfolio ↗</a><a href="https://github.com/Lida-Gheidary/Program-Project">Repository ↗</a><a href="#overview">Back to top ↑</a></div></footer>
-  <noscript><div class="noscript-note container">The written case study is available above. Enable JavaScript for interactive charts, tables, and CSV downloads. The original exports are linked under Study design.</div></noscript>
+
+  <footer class="site-footer container">
+    <div><strong>Lida Gheidary</strong><p>Marketing channel performance &amp; attribution</p></div>
+    <div><a href="https://lida-gheidary.github.io/Portfolio/">Portfolio ↗</a><a href="https://github.com/Lida-Gheidary/Program-Project">Repository ↗</a><a href="#overview">Back to top ↑</a></div>
+  </footer>
+  <noscript><div class="noscript-note container">Enable JavaScript for interactive charts, numerical tables, and CSV downloads. The written study and original export links remain available above.</div></noscript>
   <script src="script.js" defer></script>
 </body>
 </html>
